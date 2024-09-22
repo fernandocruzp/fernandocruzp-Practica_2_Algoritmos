@@ -99,5 +99,6 @@ class TestPractica1:
         # Probamos que todos los nodos tengan ya el mensaje
         mensaje_enviado = grafica[0].mensaje
         for nodo in grafica:
+            print(nodo.mensaje)
             assert mensaje_enviado == nodo.mensaje, (
                 'El nodo %d no tiene el mensaje correcto' % nodo.id_nodo)

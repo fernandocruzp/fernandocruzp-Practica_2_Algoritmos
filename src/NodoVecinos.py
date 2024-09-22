@@ -19,7 +19,7 @@ class NodoVecinos(Nodo):
         ''' Algoritmo que hace que el nodo conozca a los vecinos de sus vecinos.
             Lo guarda en la variable identifiers.'''
         # Envíamos la lista de nuestros vecinos a nuestros vecinos.
-        self.canal_salida.envia(self.vecinos, self.vecinos)
+        env.process(self.canal_salida.envia(self.vecinos, self.vecinos))
         # Y esperamos los mensajes de nuestros vecinos.
         while True:
             mensaje = yield self.canal_entrada.get()

@@ -21,6 +21,7 @@ class NodoBroadcast(Nodo):
         ''' Algoritmo de Broadcast. Desde el nodo distinguido (0)
             vamos a enviar un mensaje a todos los demás nodos.'''
         if self.id_nodo == 0:
+            self.mensaje="hola"
             env.process(self.canal_salida.envia(self.mensaje, self.vecinos))
 
         while True:

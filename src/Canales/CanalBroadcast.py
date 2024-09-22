@@ -16,8 +16,8 @@ class CanalBroadcast(Canal):
         '''
         Envia un mensaje a los canales de salida de los vecinos.
         '''
-        for vecino in self.canales:
-            yield vecino.put(mensaje)
+        for vecino in vecinos:
+            yield self.canales[vecino].put(mensaje)
 
     def crea_canal_de_entrada(self):
         '''
