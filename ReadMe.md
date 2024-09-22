@@ -1,5 +1,7 @@
 Cruz Pineda Fernando 423076479
+
 Rodríguez Escobar David Yael 420088930
+
 Sánchez Pavia Ángel Gabriel 318281940
 
 Ejercicio 1
