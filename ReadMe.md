@@ -1,6 +1,6 @@
 Cruz Pineda Fernando `423076479`  
-aquí yael  
-Sánchez Pavia Angel Gabriel `318281940`  
+Sánchez Pavia Angel Gabriel `318281940` 
+Rodríguez Escobar David Yael `420088930`
 
 # Ejercicio 1
 
