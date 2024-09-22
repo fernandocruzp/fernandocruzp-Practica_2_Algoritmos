@@ -8,6 +8,10 @@ En el ejercicio 0 unicamente tuvimos que modificar primero la clase CanalBroadca
 
 Ejercicio 2
 
+En el ejercicio 2, el nodo distinguido inicia el proceso enviando un mensaje "GO" a sus vecinos. Cada nodo que recibe este mensaje, si aún no tiene un padre asignado, se marca a sí mismo como hijo del nodo que le envió el mensaje y reenvía el mensaje "GO" a sus vecinos, excepto al nodo de quien recibió el mensaje (para evitar ciclos).
+
+El nodo sigue esperando respuestas de sus vecinos. Cuando un nodo ha recibido las respuestas esperadas de todos sus vecinos (mensaje "Back"), envía un mensaje de confirmación "Back" a su padre, indicando que ya terminó de procesar sus vecinos. Si el nodo no tiene padre (nodo distinguido), el proceso concluye cuando ha recibido todas las confirmaciones de vuelta.
+
 Ejercicio 3
 
 Usamos la misma clase de CanalBroadcast.py que en el ejercicio 1.
