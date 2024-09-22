@@ -19,4 +19,29 @@ class NodoGenerador(Nodo):
         self.mensajes_esperados = len(vecinos) # Cantidad de mensajes que esperamos
     
     def genera_arbol(self, env):
-        a=1
+        if self.id_nodo==0:
+            env.process(self.canal_salida.envia("GO,"+ str(self.id_nodo), self.vecinos))
+        
+        while True:
+            mensaje_recibido = yield self.canal_entrada.get()
+            mensaje=mensaje_recibido.split(",")
+            accion=mensaje[0]
+            id_recibido=int(mensaje[1]) if mensaje[1] != "None" else None
+            if accion == "GO":
+                if self.padre is None:
+                    self.padre = id_recibido
+                    self.mensajes_esperados -=1 
+                    if self.mensajes_esperados==0:
+                        env.process(self.canal_salida.envia("Back,"+str(self.id_nodo), [self.padre]))
+                    else:
+                        env.process(self.canal_salida.envia("GO,"+str(self.id_nodo), [x for x in self.vecinos if x != self.padre]))
+                else:
+                    env.process(self.canal_salida.envia("Back,None", [id_recibido]))
+            if accion == "Back":
+                self.mensajes_esperados -=1
+                if id_recibido is not None:
+                    self.hijos.append(id_recibido)
+                if self.mensajes_esperados == 0 and self.padre is not None:
+                    if self.id_nodo != 0:
+                        env.process(self.canal_salida.envia("Back,"+str(self.id_nodo), [self.padre]))
+            yield env.timeout(TICK)
