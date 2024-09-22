@@ -19,4 +19,4 @@ class NodoGenerador(Nodo):
         self.mensajes_esperados = len(vecinos) # Cantidad de mensajes que esperamos
     
     def genera_arbol(self, env):
-    #Tu código aquí
+        a=1
